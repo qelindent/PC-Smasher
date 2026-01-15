@@ -1,0 +1,175 @@
+@font-face {
+  font-family: 'PixelFont';
+  src: url('./fonts/impact.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Apply font to UI and body */
+body, #ui, #result {
+  font-family: 'PixelFont', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  cursor: url('images/cursor.cur'), auto;
+}
+
+/* Start Screen */
+#start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  z-index: 100;
+}
+
+#start-screen img#start-image {
+  max-width: 80%;
+  max-height: 50%;
+  object-fit: contain;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #000;
+}
+
+#start-screen img#start-button {
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+#start-screen img#start-button:hover {
+  transform: scale(1.05);
+}
+
+/* Game Screen */
+#game-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#computer {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+/* === UI SECTION (Timer / Score / Best) === */
+#ui {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px; /* space between timer, score, best */
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Each UI element (image + text) */
+#ui div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* spacing between image and number */
+  min-width: 160px;
+}
+
+/* UI images */
+#ui img {
+  height: 40px;
+  width: auto;
+  display: inline-block;
+}
+
+/* Numbers next to images */
+#ui span {
+  font-size: 32px;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Timer unit */
+#ui .unit {
+  font-size: 20px;
+  margin-left: 4px;
+}
+
+/* Result text */
+#result {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+/* Restart button image */
+#restart {
+  margin-top: 20px;
+  width: 180px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+#restart:hover {
+  transform: scale(1.05);
+}
+
+#watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 150px; /* adjust as needed */
+  z-index: 9999;
+  pointer-events: none; /* so it doesn’t block clicks */
+}
+
+/* Instruction image ("Click on the PC to destroy it") */
+#click-instruction {
+  position: absolute; /* Position relative to the game screen */
+  top: 50%;           /* Center vertically relative to the PC */
+  left: -40%;         /* Slightly to the right of the PC */
+  transform: translateY(-50%); /* Perfect vertical centering */
+  width: 180px;       /* Adjust as needed */
+  height: auto;
+  z-index: 50;        /* On top of other elements */
+  pointer-events: none; /* Prevent clicks on it */
+}
+
+/* Optional: make it responsive */
+@media (max-width: 600px) {
+  #click-instruction {
+    width: 120px;
+    left: 110%;
+  }
+}
+
+@media (max-width: 400px) {
+  #click-instruction {
+    width: 90px;
+    left: 115%;
+  }
+}
