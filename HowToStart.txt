@@ -1,0 +1,1 @@
+To start the game, double click on index.html
